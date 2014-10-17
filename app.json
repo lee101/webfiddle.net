@@ -1,0 +1,7 @@
+{
+  "name": "Webfiddle",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "https://github.com/lee101/webfiddle.net",
+  "logo": "TODO",
+  "keywords": ["node", "express", "static"]
+}
