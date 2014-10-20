@@ -2,6 +2,6 @@
   "name": "Webfiddle",
   "description": "A barebones Node.js app using Express 4",
   "repository": "https://github.com/lee101/webfiddle.net",
-  "logo": "TODO",
+  "logo": "/public/favicon.ico",
   "keywords": ["node", "express", "static"]
 }
