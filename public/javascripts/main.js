@@ -26,22 +26,25 @@ var exportedThing = (function ($) {
 
         }, defaultCodeMirrorOptions));
 
-        var times = 0
-        jsEditor.on('keyup', function (codeMirror, event) {
+        self.addEditorCompletion(jsEditor);
+        self.addEditorCompletion(cssEditor);
+    });
+
+    self.addEditorCompletion = function(editor) {
+        var times = 0;
+        editor.on('keyup', function (codeMirror, event) {
             var isAlphabetical = event.which >= 65 && event.which <= 90;
             if (isAlphabetical) {
-                times ++
+                times++
             }
             else {
                 times = 0
             }
             if (times >= 2) {
-                jsEditor.showHint();
+                editor.showHint({completeSingle: false});
             }
         })
-
-
-    });
+    };
 
 
     return self;
