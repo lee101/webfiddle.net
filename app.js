@@ -58,4 +58,18 @@ app.use(function (err, req, res, next) {
 });
 
 
+httpProxy = require('http-proxy');
+
+var proxy = httpProxy.createProxyServer({});
+var proxySubdomain = subdomain('*.proxy', function (req, res, next) {
+    console.log(req);
+    proxy.web(req, res, {
+        target: 'http://www.google.com'
+    });
+
+});
+
+app.use(proxySubdomain);
+
+
 module.exports = app;

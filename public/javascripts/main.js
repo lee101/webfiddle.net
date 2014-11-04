@@ -1,4 +1,4 @@
-var exportedThing = (function ($) {
+var main = (function ($) {
     "use strict";
     var self = {};
     var defaultCodeMirrorOptions = {
@@ -14,11 +14,9 @@ var exportedThing = (function ($) {
         tabMode: 'spaces' // or 'shift'
     };
 
-    $(document).ready(function () {
+    self.setup = function () {
         window.jsEditor = CodeMirror($('#js-editor')[0], $.extend({
             mode: {name: "javascript", globalVars: true}
-
-
         }, defaultCodeMirrorOptions));
 
         window.cssEditor = CodeMirror($('#css-editor')[0], $.extend({
@@ -28,7 +26,22 @@ var exportedThing = (function ($) {
 
         self.addEditorCompletion(jsEditor);
         self.addEditorCompletion(cssEditor);
-    });
+
+        var setMainHeight = function () {
+            var mainHeight = $(window).height() - $('.main-header').height();
+            $('.main-content').height(mainHeight);
+        };
+
+        var refreshUI = function() {
+            setMainHeight();
+            viewport.doLayout()
+
+        };
+
+        $(window).resize(refreshUI);
+        refreshUI();
+
+    };
 
     self.addEditorCompletion = function(editor) {
         var times = 0;
@@ -47,5 +60,9 @@ var exportedThing = (function ($) {
     };
 
 
+
+
     return self;
 })(jQuery);
+
+
