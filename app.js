@@ -23,16 +23,7 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-httpProxy = require('http-proxy');
-var subdomain = require('express-subdomain');
-var proxy = httpProxy.createProxyServer({});
-var proxySubdomain = subdomain('*.proxy', function (req, res, next) {
-    console.log(req);
-    proxy.web(req, res, {
-        target: 'http://www.google.com'
-    });
-
-});
+proxySubdomain = require('./proxy');
 
 app.use(proxySubdomain);
 

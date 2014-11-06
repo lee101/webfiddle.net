@@ -56,13 +56,23 @@ Ext.onReady(function () {
             },
             {
                 region: 'east',
-                collapsible: true,
                 floatable: true,
                 split: true,
                 width: '40%',
                 minWidth: 120,
                 minHeight: 140,
-                title: 'East',
+                tools: [{
+                    xtype: 'textfield',
+//                    fieldLabel: 'URL',
+                    allowBlank: false,
+                    name: 'first',
+                    anchor: '95%',
+                    width: '100%',
+                    vtype: 'url',
+                    emptyText: 'http://www.google.com/*'
+                }],
+//                title: '<input type="text" placeholder="www.google.com/*" /> ',
+                title: 'URL',
                 layout: {
                     type: 'vbox',
                     padding: 5,
