@@ -5,6 +5,7 @@ var subdomain = require('express-subdomain');
 var proxy = httpProxy.createProxyServer({});
 
 proxy.on('proxyReq', function (proxyReq, req, res, options) {
+//    console.log(proxyReq);
 //    proxyReq.setHeader('X-Special-Proxy-Header', 'foobar');
 });
 
@@ -19,9 +20,9 @@ var proxySubdomain = subdomain('*.proxy', function (req, res, next) {
 
     //lookup fiddle by name
 
-    console.log(req);
+//    console.log(req);
     proxy.web(req, res, {
-        target: 'http://localhost'
+        target: 'http://www.addictingwordgames.com'
     });
 
 });
